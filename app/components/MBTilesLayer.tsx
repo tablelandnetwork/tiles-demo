@@ -22,11 +22,7 @@ class MBTiles extends L.TileLayer {
     tile.alt = ""
     tile.setAttribute("role", "presentation")
 
-    L.DomEvent.on(
-      tile,
-      "load",
-      L.Util.bind(this._tileOnLoad, this, done, tile)
-    )
+    L.DomEvent.on(tile, "load", L.Util.bind(this._tileOnLoad, this, done, tile))
     L.DomEvent.on(
       tile,
       "error",
