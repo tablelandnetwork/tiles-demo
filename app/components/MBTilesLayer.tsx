@@ -38,7 +38,7 @@ class MBTiles extends L.TileLayer {
     }
 
     const xhr = new XMLHttpRequest()
-    xhr.open("POST", "http://127.0.0.1:26650/v1/query", true)
+    xhr.open("POST", "http://34.125.163.42:26650/v1/query", true)
     xhr.onload = (e) => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
@@ -63,7 +63,7 @@ class MBTiles extends L.TileLayer {
   }
 
   getAttribution() {
-    return "<a href='https://placekitten.com/attribution.html'>PlaceKitten</a>"
+    return "<a href='https://tableland.xyz'>Tableland</a>"
   }
 }
 
