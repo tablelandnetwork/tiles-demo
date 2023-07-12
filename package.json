@@ -1,0 +1,48 @@
+{
+  "name": "tiles-demo",
+  "description": "Tableland MBTiles Demo",
+  "version": "0.0.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tablelandnetwork/tiles-demo.git"
+  },
+  "license": "MIT AND Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/tablelandnetwork/tiles-demo/issues"
+  },
+  "homepage": "https://github.com/tablelandnetwork/tiles-demo#readme",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "lint:fix": "next lint -- --fix",
+    "prettier": "prettier '**/*.{js,ts,json,tsx,md,css}' --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "format": "npm run prettier:fix && npm run lint:fix"
+  },
+  "dependencies": {
+    "@tailwindcss/typography": "0.5.9",
+    "autoprefixer": "10.4.14",
+    "eslint": "8.39.0",
+    "eslint-config-next": "13.3.1",
+    "eslint-config-prettier": "8.8.0",
+    "leaflet": "1.9.4",
+    "next": "13.3.1",
+    "postcss": "8.4.23",
+    "prettier": "2.8.8",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.8.0",
+    "react-leaflet": "4.2.1",
+    "tailwindcss": "3.3.1",
+    "typescript": "5.0.4"
+  },
+  "devDependencies": {
+    "@types/leaflet": "1.9.3",
+    "@types/node": "18.15.11",
+    "@types/react": "18.0.33",
+    "@types/react-dom": "18.0.11"
+  }
+}
