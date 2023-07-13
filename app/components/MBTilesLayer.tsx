@@ -4,6 +4,8 @@ import L, { Layer, TileLayerOptions } from "leaflet"
 import { createLayerComponent, LayerProps } from "@react-leaflet/core"
 import { ReactNode } from "react"
 
+const fvmProxy = "https://fvm.tableland.network/v1/query"
+
 interface MBTilesProps extends LayerProps {
   db: string
   children?: ReactNode
@@ -38,7 +40,7 @@ class MBTiles extends L.TileLayer {
     }
 
     const xhr = new XMLHttpRequest()
-    xhr.open("POST", "http://34.125.163.42:26650/v1/query", true)
+    xhr.open("POST", fvmProxy, true)
     xhr.onload = (e) => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
