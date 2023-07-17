@@ -4,7 +4,10 @@ import L, { Layer, TileLayerOptions } from "leaflet"
 import { createLayerComponent, LayerProps } from "@react-leaflet/core"
 import { ReactNode } from "react"
 
-const fvmProxy = "https://fvm.tableland.network/v1/query"
+const fvmProxy =
+  process.env.NODE_ENV == "development"
+    ? "http://127.0.0.1:26650/v1/query"
+    : "https://fvm.tableland.network/v1/query"
 
 interface MBTilesProps extends LayerProps {
   db: string
@@ -41,10 +44,11 @@ class MBTiles extends L.TileLayer {
 
     const xhr = new XMLHttpRequest()
     xhr.open("POST", fvmProxy, true)
+    xhr.setRequestHeader("Content-Type", "application/json")
     xhr.onload = (e) => {
       if (xhr.readyState === 4) {
         if (xhr.status === 200) {
-          const res = JSON.parse(xhr.responseText).return_data
+          const res = JSON.parse(xhr.responseText)
           if (res && res.rows && res.rows.length === 1) {
             tile.src = URL.createObjectURL(
               new Blob([Uint8Array.from(res.rows[0][0])], { type: "image/png" })
@@ -59,7 +63,11 @@ class MBTiles extends L.TileLayer {
     xhr.onerror = (e) => {
       console.error(xhr.statusText)
     }
-    xhr.send(stmt)
+
+    const req = {
+      stmt: stmt,
+    }
+    xhr.send(JSON.stringify(req))
 
     return tile
   }
@@ -75,9 +83,9 @@ const createMBTilesLayer = (props: MBTilesProps, context: any) => {
 }
 
 const updateMBTilesLayer = (
-  instance: Layer,
-  props: MBTilesProps,
-  prevProps: MBTilesProps
+  _instance: Layer,
+  _props: MBTilesProps,
+  _prevProps: MBTilesProps
 ) => {
   // no op
 }

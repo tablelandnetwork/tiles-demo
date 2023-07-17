@@ -12,7 +12,7 @@ export function ChangeView(coords: LatLngLiteral) {
   return null
 }
 export default function Map() {
-  const [geoData, setGeoData] = useState({ lat: 38.938611, lng: -119.966794 })
+  const [geoData,] = useState({ lat: 41.890202, lng: 12.492323 })
 
   return (
     <MapContainer center={geoData} zoom={1} style={{ height: "100vh" }}>
