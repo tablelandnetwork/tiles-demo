@@ -61,7 +61,6 @@ class MBTiles extends L.TileLayer {
 
     const req = {
       stmt,
-      gas_limit: 10000000000000,
     }
     xhr.send(JSON.stringify(req))
 
