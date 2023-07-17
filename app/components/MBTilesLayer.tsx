@@ -55,17 +55,13 @@ class MBTiles extends L.TileLayer {
             )
             this.cache.set(stmt, tile.src)
           }
-        } else {
-          console.error(xhr.statusText)
         }
       }
     }
-    xhr.onerror = (e) => {
-      console.error(xhr.statusText)
-    }
 
     const req = {
-      stmt: stmt,
+      stmt,
+      gas_limit: 10000000000000,
     }
     xhr.send(JSON.stringify(req))
 
